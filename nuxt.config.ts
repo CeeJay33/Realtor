@@ -19,5 +19,10 @@ export default defineNuxtConfig({
     },
   },
 
+  build: {
+    // Ensures assets are built with the correct paths
+    publicPath: '/_nuxt/',
+  },
+
   compatibilityDate: "2024-11-11",
 });
