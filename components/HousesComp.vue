@@ -14,7 +14,7 @@
             class="image-container"
            
           >
-            <img :src="`./_nuxt/assets/${property.primary_photo.href}`" />
+            <img :src="`/assets/${property.primary_photo.href}`" />
             <div class="badgee">Start your purchase</div>
             <div class="wishlist">
               <svg
