@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   // publicRuntimeConfig: {
   //   rapidApiKey: process.env.NUXT_ENV_RAPIDAPI_KEY,
   // },
-  modules: [""],
+  modules: ["", ""],
 
   alias: {
     "@": resolve(__dirname, "/"),
@@ -19,10 +19,7 @@ export default defineNuxtConfig({
     },
   },
 
-  build: {
-    // Ensures assets are built with the correct paths
-    publicPath: '/_nuxt/',
-  },
+  
 
   compatibilityDate: "2024-11-11",
 });

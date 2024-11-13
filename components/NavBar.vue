@@ -4,7 +4,7 @@
       class="w-full fixed bg-white top-0 right-0 px-5 lg:px-8 xl:px-[8%] py-4 mb-3 flex items-center justify-between z-50"
     >
       <img
-        src="~/assets/logo-design-for-realtor-r-letter-logo-r-logo-by-shihab-logo-designer-dribbble-removebg-preview.png"
+        src="/images/logo-design-for-realtor-r-letter-logo-r-logo-by-shihab-logo-designer-dribbble-removebg-preview.png"
         alt="logo"
         class="w-28 cursor-pointer mr-14 "
       />
