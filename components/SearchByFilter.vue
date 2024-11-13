@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full mt-0 bg-white text-center sticky py-4 top-20 z-50 container__bar">
+  <div class="w-full mt-0 bg-white text-center sticky py-4 px-0 top-20 z-50 container__bar">
     <div class="flex items-center justify-center gap-5 ">
       <h4 class="font-semibold">Search properties by filter</h4>
       <!-- Click event on the SVG to toggle container visibility -->
@@ -22,7 +22,26 @@
       :class="['slide-container', { open: isContainerVisible }]"
     >
       <div class="content">
-        <p>Properties </p>
+        <div>
+          <span>For rent</span>
+        </div>
+
+        <div>
+          <span>For sale</span>
+        </div>
+
+        <div>
+          <span>Location</span>
+        </div>
+        <div>
+          <span>Sort</span>
+        </div>
+        <div>
+          <span>Bedrooms</span>
+        </div>
+         <div>
+          <span>Bathrooms</span>
+        </div>
         <!-- Add your filter form or content here -->
       </div>
     </div>
@@ -45,10 +64,10 @@ export default {
 </script>
 
 <style scoped>
-/* Base styles for the sliding container */
 .slide-container {
-  /* max-height: 0; */
-  width: 100%;
+  max-height: 0;
+  width: 600px;
+  margin: auto;
   overflow: hidden;
   transition: max-height 0.5s ease, padding 0.5s ease;
   /* background-color: #f3f3f3; */
@@ -56,20 +75,21 @@ export default {
   opacity: 0; /* Initial opacity */
 }
 
-/* Expanded state with full height and opacity */
 .slide-container.open {
-  max-height: 300px; /* Adjust based on content size */
-  padding: 10px;
+  max-height: 700px; /* Adjust based on content size */
+  padding: 2rem 0 0 0;
   opacity: 1;
 }
 
-/* Smooth opacity transition for the content */
 .content {
   transition: opacity 0.3s ease-in-out;
+  display: flex;
+  gap: 2rem;
   opacity: 1;
+  width: 600px;
+  margin: 0;
 }
 
-/* Hide content when container is closed */
 .slide-container:not(.open) .content {
   opacity: 0;
 }
@@ -78,8 +98,34 @@ export default {
 @media (max-width: 568px) {
 
 .container__bar {
-    /* display: none; */
-    width: 100%;
+  margin-right: 2rem;
+}
+
+.content {
+  transition: opacity 0.3s ease-in-out;
+  opacity: 1;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 2rem;
+  padding-right: 2rem;
+ 
+}
+
+.slide-container {
+  /* max-height: 0; */
+  width: 400px;
+  display: flex;
+  flex-wrap: wrap;
+   margin-right: 2rem;
+  padding-right: 2rem;
+  
+}
+
+.slide-container.open {
+  margin-right: 3rem;
+  padding-right: 1rem;
+  opacity: 1;
 }
 
 }
