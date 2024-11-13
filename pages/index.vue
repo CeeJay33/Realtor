@@ -4,7 +4,7 @@
 
 <div class="main__container">
     <NavBar/>
-    <SearchByFilter/>
+    <SearchByFilter class="hidden sm:block"/>
     <HousesComp/>
 
     </div>

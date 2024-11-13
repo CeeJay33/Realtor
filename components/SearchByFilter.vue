@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full mt-20 bg-white text-center sticky py-4 top-20 z-50 container__bar">
+  <div class="w-full mt-0 bg-white text-center sticky py-4 top-20 z-50 container__bar">
     <div class="flex items-center justify-center gap-5 ">
       <h4 class="font-semibold">Search properties by filter</h4>
       <!-- Click event on the SVG to toggle container visibility -->
@@ -18,12 +18,11 @@
       </svg>
     </div>
     
-    <!-- Sliding container below the SVG with smooth transition -->
     <div
       :class="['slide-container', { open: isContainerVisible }]"
     >
       <div class="content">
-        <p>Your filter options go here...</p>
+        <p>Properties </p>
         <!-- Add your filter form or content here -->
       </div>
     </div>
@@ -48,10 +47,11 @@ export default {
 <style scoped>
 /* Base styles for the sliding container */
 .slide-container {
-  max-height: 0;
+  /* max-height: 0; */
+  width: 100%;
   overflow: hidden;
   transition: max-height 0.5s ease, padding 0.5s ease;
-  background-color: #f3f3f3;
+  /* background-color: #f3f3f3; */
   padding: 0 10px; /* padding initially set to zero */
   opacity: 0; /* Initial opacity */
 }
@@ -78,7 +78,8 @@ export default {
 @media (max-width: 568px) {
 
 .container__bar {
-    display: none;
+    /* display: none; */
+    width: 100%;
 }
 
 }
