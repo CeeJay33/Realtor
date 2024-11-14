@@ -214,14 +214,49 @@ export default {
   text-decoration: none;
 }
 
-
 @media (max-width: 768px) {
-    .title {
-  font-size: 1.6rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
+  .signup-card {
+    max-width: 90%; /* Takes 90% of the screen on smaller devices */
+    padding: 1.5rem;
+  }
+  
+  .title {
+    font-size: 1.6rem;
+  }
+  
+  .subtitle, .signin-link {
+    font-size: 0.9rem;
+  }
+  
+  .input-group input {
+    font-size: 0.9rem;
+  }
+
+  .signup-btn {
+    font-size: 0.9rem;
+  }
 }
 
+@media (max-width: 480px) {
+  .signup-card {
+    max-width: 95%; /* Takes 95% of the screen on extra-small devices */
+    padding: 1rem;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+  }
+  
+  .subtitle, .signin-link {
+    font-size: 0.85rem;
+  }
+  
+  .input-group input {
+    font-size: 0.85rem;
+  }
 
+  .signup-btn {
+    font-size: 0.85rem;
+  }
 }
 </style>
