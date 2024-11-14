@@ -79,7 +79,7 @@ export default {
   align-items: center;
   min-height: 100vh;
   background-color: #ffffff;
-  overflow-y: hidden; /* Prevents vertical scrolling */
+  /* Prevents vertical scrolling */
 }
 
 .signup-card {
@@ -218,7 +218,8 @@ export default {
 @media (max-width: 768px) {
   .signup-card {
     max-width: 90%; /* Takes 90% of the screen on smaller devices */
-    padding: 1.5rem;
+    padding: 1.5rem; 
+    overflow-y: hidden;
   }
   
   .title {
