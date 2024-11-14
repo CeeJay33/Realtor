@@ -253,6 +253,7 @@ export default {
   
   .input-group input {
     font-size: 0.85rem;
+    padding: 0.2rem;
   }
 
   .signup-btn {
