@@ -42,7 +42,6 @@
          <div>
           <span>Bathrooms</span>
         </div>
-        <!-- Add your filter form or content here -->
       </div>
     </div>
   </div>
@@ -52,7 +51,7 @@
 export default {
   data() {
     return {
-      isContainerVisible: false // Controls the visibility of the sliding container
+      isContainerVisible: false 
     };
   },
   methods: {
