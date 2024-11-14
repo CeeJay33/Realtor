@@ -2,8 +2,8 @@
   <div class="signup-container">
     <SignNav/>
     <div class="signup-card">
-      <h2 class="title">Sign Up</h2>
-      <p class="subtitle">Let's Join us! Create an account with,</p>
+      <h2 class="title">Sign In</h2>
+      <p class="subtitle">Let's get you in! Login with your info,</p>
       
       <!-- Social Login Buttons -->
       <div class="social-buttons">
@@ -23,13 +23,7 @@
       
       <!-- Sign Up Form -->
       <form @submit.prevent="handleSignUp">
-        <div class="input-group">
-          <label for="name">
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--hugeicons MuiBox-root css-0" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" color="currentColor"><path d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2s10 4.477 10 10"></path><path d="M14.75 9.5a2.75 2.75 0 1 1-5.5 0a2.75 2.75 0 0 1 5.5 0M5.5 19l.56-.98a5 5 0 0 1 4.342-2.52h3.196a5 5 0 0 1 4.342 2.52l.56.98"></path></g></svg>
-          </label>
-          <input type="text" id="name" v-model="name" placeholder="Your Name" required />
-        </div>
-        
+       
         <div class="input-group">
           <label for="email">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--hugeicons MuiBox-root css-0" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" color="currentColor"><path d="m7 7.5l2.942 1.74c1.715 1.014 2.4 1.014 4.116 0L17 7.5"></path><path d="M10.5 19.5a116 116 0 0 1-1.401-.027c-3.149-.079-4.723-.118-5.854-1.255c-1.131-1.136-1.164-2.67-1.23-5.737a69 69 0 0 1 0-2.953c.066-3.067.099-4.6 1.23-5.737C4.376 2.655 5.95 2.616 9.099 2.537a115 115 0 0 1 5.802 0c3.149.079 4.723.118 5.854 1.254s1.164 2.67 1.23 5.737c.009.455.014.668.015.972"></path><path d="M19 17a1.5 1.5 0 1 1-3 0a1.5 1.5 0 0 1 3 0m0 0v.5a1.5 1.5 0 0 0 3 0V17a4.5 4.5 0 1 0-4.5 4.5"></path></g></svg>
@@ -44,11 +38,11 @@
           <input type="password" id="password" v-model="password" placeholder="Your Password" required />
         </div>
         
-        <button type="submit" class="signup-btn">Sign Up</button>
+        <button type="submit" class="signup-btn">Sign In</button>
       </form>
       
       <p class="signin-link">
-        Already have an account? <nuxt-link to="../sign-in">Signin</nuxt-link>
+        Don't have an account? <nuxt-link to="/sign-up">Signup</nuxt-link>
       </p>
     </div>
   </div>
@@ -233,7 +227,7 @@ export default {
   
   .input-group input {
     font-size: 1rem; /* Prevents zooming on smaller screens */
-     padding: 0.2rem;
+     padding: 0.1rem;
 
   }
 
@@ -250,7 +244,6 @@ export default {
   .signup-btn {
     font-size: 1rem;
      padding: 0.6rem;
-     margin-top: 0.5rem;
   }
 }
 
