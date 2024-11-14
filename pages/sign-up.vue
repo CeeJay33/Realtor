@@ -79,6 +79,7 @@ export default {
   align-items: center;
   min-height: 100vh;
   background-color: #ffffff;
+  overflow-y: hidden; /* Prevents vertical scrolling */
 }
 
 .signup-card {
@@ -182,7 +183,7 @@ export default {
   outline: none;
   background: transparent;
   flex: 1;
-  font-size: 0.9rem;
+  font-size: 1rem; /* Set to 16px to prevent iOS zooming */
   color: #333;
 }
 
@@ -229,7 +230,7 @@ export default {
   }
   
   .input-group input {
-    font-size: 0.9rem;
+    font-size: 1rem; /* Prevents zooming on smaller screens */
   }
 
   .signup-btn {
@@ -252,7 +253,7 @@ export default {
   }
   
   .input-group input {
-    font-size: 0.85rem;
+    font-size: 1rem; /* Prevents zooming */
     padding: 0.2rem;
   }
 
