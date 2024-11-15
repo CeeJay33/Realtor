@@ -7083,48 +7083,48 @@ export default defineEventHandler(async (event) => {
                 text: ["Fencing: Back Yard"],
                 category: "Exterior and Lot Features",
               },
-              {
-                text: [
-                  "Lot Description: Corner Lot, Near Public Transit",
-                  "Lot Size Acres: 0.0607897",
-                  "Lot Size Dimensions: 27.25x97.17",
-                  "Lot Size Square Feet: 2648",
-                ],
-                category: "Land Info",
-              },
-              {
-                text: ["Parking Features: Private"],
-                category: "Garage and Parking",
-              },
-              {
-                text: [
-                  "Association: No",
-                  "Calculated Total Monthly Association Fees: 0",
-                ],
-                category: "Homeowners Association",
-              },
-              {
-                text: [
-                  "Elementary School: Ps 108 Capt Vincent G Fowler",
-                  "Elementary School District: Queens 27",
-                  "High School: John Adams High School",
-                  "High School District: Queens 27",
-                  "Middle School: Jhs 226 Virgil I Grissom",
-                  "Middle or Junior School District: Queens 27",
-                ],
-                category: "School Information",
-              },
-              {
-                text: ["Community Features: Park, Near Public Transportation"],
-                category: "Amenities and Community Features",
-              },
-              {
-                text: [
-                  "Annual Tax Amount: 7314.00",
-                  "Tax Block: 11642",
-                  "Source Listing Status: Active",
-                  "County: Queens",
-                  "Cross Street: Linden Blvd",
+                        {
+                          text: [
+                            "Lot Description: Corner Lot, Near Public Transit",
+                            "Lot Size Acres: 0.0607897",
+                            "Lot Size Dimensions: 27.25x97.17",
+                            "Lot Size Square Feet: 2648",
+                          ],
+                          category: "Land Info",
+                        },
+                        {
+                          text: ["Parking Features: Private"],
+                          category: "Garage and Parking",
+                        },
+                        {
+                          text: [
+                            "Association: No",
+                            "Calculated Total Monthly Association Fees: 0",
+                          ],
+                          category: "Homeowners Association",
+                        },
+                        {
+                          text: [
+                            "Elementary School: Ps 108 Capt Vincent G Fowler",
+                            "Elementary School District: Queens 27",
+                            "High School: John Adams High School",
+                            "High School District: Queens 27",
+                            "Middle School: Jhs 226 Virgil I Grissom",
+                            "Middle or Junior School District: Queens 27",
+                          ],
+                          category: "School Information",
+                        },
+                        {
+                          text: ["Community Features: Park, Near Public Transportation"],
+                          category: "Amenities and Community Features",
+                        },
+                        {
+                          text: [
+                            "Annual Tax Amount: 7314.00",
+                            "Tax Block: 11642",
+                            "Source Listing Status: Active",
+                            "County: Queens",
+                            "Cross Street: Linden Blvd",
                   "Directions: Please refer to Google Maps.",
                   "List Price Low: 980000",
                   "Source Property Type: Residential",
