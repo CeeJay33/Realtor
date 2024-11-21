@@ -8,7 +8,7 @@
         src="/images/logo-design-for-realtor-r-letter-logo-r-logo-by-shihab-logo-designer-dribbble-removebg-preview.png"
         alt="logo"
         
-        class="w-28 cursor-pointer mr-14 "
+        class="w-28 cursor-pointer mr-14 z-50"
       />
       
       <ul
