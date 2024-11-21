@@ -17,7 +17,6 @@ export default defineEventHandler(async (event: H3Event) => {
       return { success: false, message: "Only POST requests are allowed." };
     }
 
-    // Parse request body
     const { username, email, password } = (await readBody(
       event
     )) as Partial<User>;
@@ -27,17 +26,14 @@ export default defineEventHandler(async (event: H3Event) => {
       return { success: false, message: "All fields are required." };
     }
 
-    // Read existing users from auth.json
     const data = await fs.readFile(filePath, "utf-8");
     const users = JSON.parse(data) as User[];
 
-    // Check if the user already exists
     if (users.some((user) => user.email === email)) {
       event.node.res.statusCode = 409;
       return { success: false, message: "User already exists." };
     }
 
-    // Add the new user
     const newUser: User = { username, email, password };
     users.push(newUser);
     await fs.writeFile(filePath, JSON.stringify(users, null, 2));
