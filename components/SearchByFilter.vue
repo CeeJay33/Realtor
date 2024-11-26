@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full mt-0 bg-white text-center sticky py-4 px-0 top-20 z-50 container__bar">
+  <div class="w-full mt-0 bg-white text-center sticky py-4 px-0 top-16 z-50 container__bar">
     <div class="flex items-center justify-center gap-5 ">
       <h4 class="font-semibold">Search properties by filter</h4>
       <!-- Click event on the SVG to toggle container visibility -->
@@ -23,24 +23,24 @@
     >
       <div class="content">
         <div>
-          <span>For rent</span>
+          <span class="cursor-pointer hover:opacity-55">For rent</span>
         </div>
 
         <div>
-          <span>For sale</span>
+          <span class="cursor-pointer hover:opacity-55">For sale</span>
         </div>
 
         <div>
-          <span>Location</span>
+          <span class="cursor-pointer hover:opacity-55">Location</span>
         </div>
         <div>
-          <span>Sort</span>
+          <span class="cursor-pointer hover:opacity-55">Sort</span>
         </div>
         <div>
-          <span>Bedrooms</span>
+          <span class="cursor-pointer hover:opacity-55">Bedrooms</span>
         </div>
          <div>
-          <span>Bathrooms</span>
+          <span class="cursor-pointer hover:opacity-55">Bathrooms</span>
         </div>
       </div>
     </div>

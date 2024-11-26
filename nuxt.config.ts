@@ -3,7 +3,17 @@ export default defineNuxtConfig({
   // publicRuntimeConfig: {
   //   rapidApiKey: process.env.NUXT_ENV_RAPIDAPI_KEY,
   // },
-  modules: ["", ""],
+
+  modules: ["@nuxtjs/google-fonts"],
+
+  head: {
+    link: [
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap",
+      },
+    ],
+  },
 
   alias: {
     "@": resolve(__dirname, "/"),
@@ -18,8 +28,6 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-
-  
 
   compatibilityDate: "2024-11-11",
 });

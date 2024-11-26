@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-12">
+  <div class=" mt-0">
     <div
       class="designer-details flex justify-center items-center gap-4 flex-wrap"
       v-if="propertiesData && propertiesData.length"

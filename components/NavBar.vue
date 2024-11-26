@@ -54,9 +54,7 @@
         <a
           href="#contact"
           class="hidden lg:flex item-center gap-3 px-10 py-2.5 border border-gray-500 rounded-full ml-4 relative"
-          >For rent <svg width="20px" height="20px" class="absolute right-4 bottom-1 mb-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M7 17L17 7M17 7H8M17 7V16" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg></a
+          >For rent </a
         >
 
         <button class="block md:hidden ml-3" @click="toggleMenu">

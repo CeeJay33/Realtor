@@ -51,10 +51,14 @@
         Already have an account? <nuxt-link to="../sign-in">Signin</nuxt-link>
       </p>
     </div>
+
+    <ToastReg/>
   </div>
 </template>
 
 <script>
+// import ToastReg from '~/components/ToastReg.vue';
+
 export default {
   data() {
     return {
@@ -66,31 +70,39 @@ export default {
   methods: {
     async handleSignUp() {
       try {
-        const response = await fetch('/api/signup', {
+        const response = await fetch('http://127.0.0.1:8000/api/register', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Accept': 'application/json', // Ensure that the server knows you expect JSON
           },
           body: JSON.stringify({
             username: this.name,
             email: this.email,
-            password: this.password
-          })
+            password: this.password,
+          }),
+          credentials: 'include', 
         });
-        
+
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const { showToast } = useToast();
         const result = await response.json();
-        if (result.success) {
-          // Redirect to root page or show success message
+
+        if (result.status === "Successful") {
+           showToast('Account created successfully!');
           this.$router.push('/');
         } else {
-          alert(result.message);
+          alert(result.error.message);
         }
       } catch (error) {
         console.error('Error during sign-up:', error);
+        alert('An error occurred during sign-up.');
       }
     }
   }
-};
+}
 </script>
 
 
@@ -102,7 +114,6 @@ export default {
   /* min-height: 100vh; */
   background-color: #ffffff;
   margin: 5rem 0 0 0;
-  /* Prevents vertical scrolling */
 }
 
 .signup-card {

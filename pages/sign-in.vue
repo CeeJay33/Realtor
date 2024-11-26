@@ -5,7 +5,6 @@
       <h2 class="title">Sign In</h2>
       <p class="subtitle">Let's get you in! Login with your info,</p>
       
-      <!-- Social Login Buttons -->
       <div class="social-buttons">
         <button class="social-btn google">
           <img src="/images/d34175f5e41ee479fce1a0400105d2c3.png" alt="Google" />
@@ -21,7 +20,6 @@
         <span>or Signup with</span>
       </div>
       
-      <!-- Sign Up Form -->
       <form @submit.prevent="handleSignUp">
        
         <div class="input-group">
@@ -59,7 +57,6 @@ export default {
   },
   methods: {
     handleSignUp() {
-      // Placeholder for handling sign-up logic
       console.log('Sign Up with:', this.name, this.email, this.password);
     }
   }
@@ -74,7 +71,6 @@ export default {
   /* min-height: 100vh; */
   background-color: #ffffff;
   margin: 5rem 0 0 0;
-  /* Prevents vertical scrolling */
 }
 
 .signup-card {
@@ -212,7 +208,7 @@ export default {
 
 @media (max-width: 768px) {
   .signup-card {
-    max-width: 100%; /* Takes 90% of the screen on smaller devices */
+    max-width: 100%; 
     padding: 1.5rem; 
     margin-top: 4rem;
   }
@@ -226,7 +222,7 @@ export default {
   }
   
   .input-group input {
-    font-size: 1rem; /* Prevents zooming on smaller screens */
+    font-size: 1rem; 
      padding: 0.1rem;
 
   }
@@ -249,7 +245,7 @@ export default {
 
 @media (max-width: 399px) {
   .signup-card {
-    max-width: 95%; /* Takes 95% of the screen on extra-small devices */
+    max-width: 95%; 
     padding: 1rem;
     margin-top: 3rem;
   }
@@ -263,7 +259,7 @@ export default {
   }
   
   .input-group input {
-    font-size: 0.8rem; /* Prevents zooming */
+    font-size: 0.8rem;
     padding: 0.1rem;
   }
 

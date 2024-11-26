@@ -8,8 +8,16 @@ export default {
     "./app.vue",
     "./error.vue",
   ],
-  theme: {
-    extend: {},
-  },
+
   plugins: [],
+
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ["Roboto", "sans-serif"],
+        serif: ["Merriweather", "serif"],
+        mono: ["Fira Code", "monospace"],
+      },
+    },
+  },
 };
