@@ -176,3 +176,33 @@ export const mutations = {
 ---
 
 Let me know if you have questions or need further customization!
+
+
+
+
+
+
+
+#toast-danger {
+  position: fixed;
+  top: 20px; /* Position at the top of the screen */
+  right: -100%; /* Initially, hide the toast off the right side */
+  transform: translateX(100%); /* Slide from right */
+  transition: transform 0.5s ease, right 0.5s ease; /* Animate both transform and right properties */
+}
+
+#toast-danger.show {
+  right: 20px; /* When shown, position it in the top-right corner */
+  transform: translateX(0); /* Slide to its final position */
+}
+
+#toast-danger.hide {
+  right: -100%; /* Slide it off the screen to the right */
+  transform: translateX(100%); /* Ensure it’s off the screen */
+}
+
+
+
+xhr.open('GET', 'https://zillow-api-data.p.rapidapi.com/agent/search?agent_name=cindy&page=1&limit=2');
+xhr.setRequestHeader('x-rapidapi-key', '1630e50b72msh3056391b9f3b146p15bab3jsn25f53975d672');
+xhr.setRequestHeader('x-rapidapi-host', 'zillow-api-data.p.rapidapi.com');

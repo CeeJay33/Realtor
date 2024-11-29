@@ -8,7 +8,7 @@
     />
     <ul v-if="results.length">
       <li v-for="(result, index) in results" :key="index">
-        {{ result.username }}
+        {{ result.descriptiontype }}
       </li>
     </ul>
   </div>
@@ -34,7 +34,7 @@ export default {
         }
 
         // Replace 'https://example.com/api/search' with your actual endpoint
-        fetch(`http://127.0.0.1:8000/api/users/search/${encodeURIComponent(this.query)}`)
+        fetch(`http://127.0.0.1:8000/api/product/search/${encodeURIComponent(this.query)}`)
           .then((response) => {
             if (!response.ok) {
               throw new Error("Network response was not ok");

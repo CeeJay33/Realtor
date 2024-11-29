@@ -43,21 +43,55 @@
         Don't have an account? <nuxt-link to="/sign-up">Signup</nuxt-link>
       </p>
     </div>
+
+    <BadToastReg/>
+    <ToastReg/>
   </div>
 </template>
 
 <script>
+
 export default {
   data() {
     return {
-      name: '',
       email: '',
       password: ''
-    }
+    };
   },
   methods: {
-    handleSignUp() {
-      console.log('Sign Up with:', this.name, this.email, this.password);
+    async handleSignUp() {
+      try {
+        const response = await fetch('http://127.0.0.1:8000/api/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json', 
+          },
+          body: JSON.stringify({
+            email: this.email,
+            password: this.password,
+          }),
+          credentials: 'include', 
+        });
+
+        
+        const { showToast } = useToast();
+        const { showBadToast } = useBadToast();
+
+        const result = await response.json();
+
+        if (result.message === "Login successful") {
+          showToast('Logged in successfully!');
+          const token = result.token
+           localStorage.setItem("tok_val_id", token)
+          this.$router.push('/Dashboard');
+        } else {
+          showBadToast(result.message);
+        }
+      } catch (error) {
+        console.error('Error during sign-up:', error);
+        console.log('An error occurred during sign-up.');
+      }
     }
   }
 }

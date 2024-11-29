@@ -53,10 +53,14 @@
     </div>
 
     <ToastReg/>
+    <BadToastReg/>
   </div>
 </template>
 
 <script>
+import useBadToast from '../composables/useBadToast';
+
+
 // import ToastReg from '~/components/ToastReg.vue';
 
 export default {
@@ -74,7 +78,7 @@ export default {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Accept': 'application/json', // Ensure that the server knows you expect JSON
+            'Accept': 'application/json', 
           },
           body: JSON.stringify({
             username: this.name,
@@ -84,21 +88,24 @@ export default {
           credentials: 'include', 
         });
 
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const { showToast } = useToast();
+        
+      const { showToast } = useToast();
+        const { showBadToast } = useBadToast();
+        
+        
         const result = await response.json();
 
         if (result.status === "Successful") {
            showToast('Account created successfully!');
           this.$router.push('/');
         } else {
-          alert(result.error.message);
+
+          // console.log(result);
+          showBadToast(result.message);
         }
       } catch (error) {
         console.error('Error during sign-up:', error);
-        alert('An error occurred during sign-up.');
+        
       }
     }
   }

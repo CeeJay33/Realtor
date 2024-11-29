@@ -30,4 +30,8 @@ export default defineNuxtConfig({
   },
 
   compatibilityDate: "2024-11-11",
+
+  devtools: {
+    enabled: false,
+  },
 });

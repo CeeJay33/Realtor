@@ -13,6 +13,7 @@
     <SearchBar class="hidden sm:block"/>
     <HousesComp/>
     <ToastReg/>
+    <BadToastReg/>
     </div>
 
 

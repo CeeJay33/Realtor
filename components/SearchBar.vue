@@ -6,7 +6,7 @@
         <div class="relative w-full">
           <div
             @click="toggleDropdown('location')"
-            class="cursor-pointer w-full h-12 border-2 border-gray-300 bg-white rounded-lg px-4 flex items-center justify-between shadow-md hover:shadow-lg transition-all duration-200 ease-in-out">
+            class="cursor-pointer w-full h-12 border-2 border-gray-200 bg-white rounded-lg px-4 flex items-center justify-between hover:shadow-lg transition-all duration-200 ease-in-out thumb">
             <span class="text-gray-700">
               {{ selected.location }}
             </span>
@@ -16,7 +16,7 @@
           </div>
           <ul
             v-if="dropdowns.location"
-            class="absolute w-full bg-white border border-gray-300 rounded-lg shadow-md mt-2 max-h-40 overflow-auto z-20">
+            class="absolute w-full bg-white border border-gray-200 rounded-lg shadow-md mt-2 max-h-40 overflow-auto z-20">
             <li
               v-for="option in locationOptions"
               :key="option"
@@ -31,7 +31,7 @@
         <div class="relative w-full">
           <div
             @click="toggleDropdown('price')"
-            class="cursor-pointer w-full h-12 border-2 border-gray-300 bg-white rounded-lg px-4 flex items-center justify-between shadow-md hover:shadow-lg transition-all duration-200 ease-in-out">
+            class="cursor-pointer w-full h-12 border-2 border-gray-200 bg-white rounded-lg px-4 flex items-center justify-between hover:shadow-lg transition-all duration-200 ease-in-out">
             <span class="text-gray-700">
               {{ selected.price }}
             </span>
@@ -41,7 +41,7 @@
           </div>
           <ul
             v-if="dropdowns.price"
-            class="absolute w-full bg-white border border-gray-300 rounded-lg shadow-md mt-2 max-h-40 overflow-auto z-20">
+            class="absolute w-full bg-white border border-gray-200 rounded-lg shadow-md mt-2 max-h-40 overflow-auto z-20">
             <li
               v-for="option in priceOptions"
               :key="option"
@@ -55,7 +55,7 @@
         <div class="relative w-full">
           <div
             @click="toggleDropdown('sort')"
-            class="cursor-pointer w-full h-12 border-2 border-gray-300 bg-white rounded-lg px-4 flex items-center justify-between shadow-md hover:shadow-lg transition-all duration-200 ease-in-out">
+            class="cursor-pointer w-full h-12 border-2 border-gray-200 bg-white rounded-lg px-4 flex items-center justify-between hover:shadow-lg transition-all duration-200 ease-in-out">
             <span class="text-gray-700">
               {{ selected.sort }}
             </span>
@@ -65,7 +65,7 @@
           </div>
           <ul
             v-if="dropdowns.sort"
-            class="absolute w-full bg-white border border-gray-300 rounded-lg shadow-md mt-2 max-h-40 overflow-auto z-20">
+            class="absolute w-full bg-white border border-gray-200 rounded-lg shadow-md mt-2 max-h-40 overflow-auto z-20">
             <li
               v-for="option in priceOptions"
               :key="option"
@@ -77,7 +77,7 @@
         </div>
 
         <!-- Search Input -->
-        <div id="search-bar" class="w-full md:w-auto border-2 bg-white border-gray-300 rounded-md shadow-lg z-10">
+        <div id="search-bar" class="w-full md:w-auto border-2 bg-white border-gray-200 rounded-md shadow-md z-10">
           <form class="flex items-center justify-center">
             <input
               type="text"
@@ -105,7 +105,7 @@ export default {
             price: false,
         sort: false,
       },
-      locationOptions: ["All Locations", "New York", "Minnesota", "Oklahoma"],
+      locationOptions: ["All Locations", "New York", "Minnesota", "Oklahoma", "Minnesota", "Oklahoma"],
       priceOptions: ["All Prices", "Freemium", "Free", "Paid"],
       selected: {
         location: "Location", 
@@ -116,12 +116,12 @@ export default {
   },
   methods: {
     toggleDropdown(type) {
-      // Close all dropdowns and toggle the current one
+
       this.dropdowns = { location: false, price: false };
       this.dropdowns[type] = !this.dropdowns[type];
     },
     selectOption(type, option) {
-      // Update the selected value and close the dropdown
+      
       this.selected[type] = option;
       this.dropdowns[type] = false;
     },
@@ -137,6 +137,27 @@ export default {
 
 .sub_main{
     padding: 2rem 0 0.5rem 0;
+}
+
+
+::-webkit-scrollbar {
+    width: 12px; /* Set the width of the scrollbar */
+}
+
+/* Add color to the scrollbar handle */
+::-webkit-scrollbar-thumb {
+    background-color: #fff; /* Set the color of the scrollbar handle */
+    border-radius: 6px; /* Optional: Round the corners of the scrollbar handle */
+}
+
+/* Optional: Add color to the scrollbar track on hover */
+::-webkit-scrollbar-track:hover {
+    background-color: #f1f1f1;
+}
+
+/* Optional: Add color to the scrollbar handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background-color: #ffffff;
 }
 .custom-dropdown li + li {
   margin-top: 5px; /* Add spacing between dropdown items */

@@ -60,10 +60,11 @@ const { isToastVisible, toastMessage, hideToast } = useToast();
   left: 50%;
   transform: translateX(-50%);
   transition: transform 0.5s ease, bottom 0.5s ease;
+  z-index: 9999;
 }
 
 #toast-success.show {
-  bottom: 20px;
+  bottom: 5px;
 }
 
 #toast-success.hide {
