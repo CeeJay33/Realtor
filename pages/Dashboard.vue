@@ -382,29 +382,41 @@
                   <div class="mt-6 flow-root">
                     <ul role="list" class="-my-4 divide-y divide-gray-200">
                       
-                        <li class="flex items-center space-x-3 py-4">
+                        <li class="flex items-center space-x-3 py-4" v-for="agent in  slice_agent(agentsData)" :key="agent.encodedZuid">
                           <div class="flex-shrink-0">
-                            <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80" alt="">
+                            <img class="h-8 w-8 rounded-full" :src="agent.profilePhotoSrc" alt="">
                           </div>
                           <div class="min-w-0 flex-1">
                             <p class="text-sm font-medium text-gray-900">
-                              <a href="#">Leonard Krasner</a>
+                              <a href="#">{{ agent.fullName }}</a>
                             </p>
                             <p class="text-sm text-gray-500">
-                              <a href="#">@leonardkrasner</a>
+                              <a href="#">{{ agent.location }}</a>
                             </p>
                           </div>
                           <div class="flex-shrink-0">
                             <button type="button" class="inline-flex items-center rounded-full bg-rose-50 px-3 py-0.5 text-sm font-medium text-rose-700 hover:bg-rose-100">
-                              <svg class="-ml-1 mr-0.5 h-5 w-5 text-rose-400" x-description="Heroicon name: mini/plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                              <!-- <svg class="-ml-1 mr-0.5 h-5 w-5 text-rose-400" x-description="Heroicon name: mini/plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
   <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path>
+</svg> -->
+
+<svg class="-ml-1 mr-0.5 h-5 w-5 text-rose-400" fill="none" aria-hidden="true" viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_15_529)">
+<rect width="24" height="24" />
+<path d="M2.01394 6.87134C1.34749 10.0618 3.85967 13.8597 7.01471 17.0147C10.1698 20.1698 13.9676 22.682 17.1581 22.0155C19.782 21.4674 21.1215 20.0697 21.8754 18.8788C22.1355 18.4678 22.0042 17.9344 21.6143 17.6436L17.9224 14.8897C17.5243 14.5928 16.9685 14.633 16.6174 14.9842L14.6577 16.9438C14.6577 16.9438 12.7529 16.3246 10.2288 13.8006C7.70482 11.2766 7.08564 9.37175 7.08564 9.37175L9.04529 7.4121C9.39648 7.06091 9.43671 6.5052 9.13975 6.10709L6.38585 2.4151C6.09505 2.02525 5.56163 1.89395 5.15068 2.15407C3.9597 2.90794 2.56203 4.24747 2.01394 6.87134Z" stroke="red" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_15_529">
+<rect width="24" height="24" />
+</clipPath>
+</defs>
 </svg>
                               <span>Contact</span>
                             </button>
                           </div>
                         </li>
                       
-                        <li class="flex items-center space-x-3 py-4">
+                        <!-- <li class="flex items-center space-x-3 py-4">
                           <div class="flex-shrink-0">
                             <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80" alt="">
                           </div>
@@ -424,9 +436,9 @@
                               <span>Contact</span>
                             </button>
                           </div>
-                        </li>
+                        </li> -->
                       
-                        <li class="flex items-center space-x-3 py-4">
+                        <!-- <li class="flex items-center space-x-3 py-4">
                           <div class="flex-shrink-0">
                             <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80" alt="">
                           </div>
@@ -446,7 +458,7 @@
                               <span>Contact</span>
                             </button>
                           </div>
-                        </li>
+                        </li> -->
                       
                     </ul>
                   </div> 
@@ -552,7 +564,8 @@ import dayjs from 'dayjs';
 export default {
   data() {
     return {
-      propertiesData: null, 
+      propertiesData: null,
+      agentsData: null 
     };
   },
 
@@ -577,12 +590,16 @@ export default {
 
     formatDate(dateString) {
       return dayjs(dateString).format('YYYY-MM-DD');
+    },
+
+    slice_agent() {
+      return this.agentsData ? this.agentsData.slice(0, 3) : [];
     }
   },
  async mounted() {
   try {
     const response = await axios.get('/api/Zillow-Property');
-    // console.log(response.data[0].data);  // Check the structure of the API response
+    // console.log(response.data[0].data);  
 
     const data = response.data[0].data.searchResults;  
     console.log(data);
@@ -596,8 +613,25 @@ export default {
     console.error("Error fetching data:", error);
   }
 
+  try {
+    const response = await axios.get('/api/Agents');
+    // console.log(response.data[0].data);  
 
-},
+    const Agentdata = response.data[0].data.results.professionals;  
+    console.log(Agentdata);
+
+    if (Agentdata && Array.isArray(Agentdata)) {
+      this.agentsData = Agentdata; 
+    } else {
+      console.error("Unexpected data structure:", Agentdata);
+    }
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+
+  },
+
+
 
 };
 </script>

@@ -58,7 +58,7 @@
 </template>
 
 <script>
-import useBadToast from '../composables/useBadToast';
+// import useBadToast from '../composables/useBadToast';
 
 
 // import ToastReg from '~/components/ToastReg.vue';
