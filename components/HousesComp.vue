@@ -1,7 +1,7 @@
 <template>
   <div class=" mt-24">
-    <h2 class=" ml-9 sm:ml-36 font-bold text-lgg">Property for Sale</h2>
-    <p class="ml-9 sm:ml-36">Browse out list of apartment of your choice</p>
+    <h2 class=" ml-6 sm:ml-36 antialiased font-bold text-lgg">Property for Sale</h2>
+    <p class=" ml-6 sm:ml-36 antialiased">Browse out list of apartment of your choice</p>
     <div
       class="designer-details flex justify-center items-center gap-4 flex-wrap"
       
