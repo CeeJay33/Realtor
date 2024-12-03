@@ -25,13 +25,32 @@
   <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd"></path>
 </svg>
                   </div>
-                  <input id="search" name="search" class="block w-full rounded-md border border-gray-300 bg-white py-2 pl-10 pr-3 text-sm placeholder-gray-500 focus:border-rose-500 focus:text-gray-900 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-rose-500 sm:text-sm" placeholder="Search" type="search">
-                </div>
+                  <input
+      id="search"
+      name="search"
+      class="block w-full rounded-md border border-gray-300 bg-white py-2 pl-10 pr-3 text-sm placeholder-gray-500 focus:border-rose-500 focus:text-gray-900 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-rose-500 sm:text-sm"
+      placeholder="Search"
+      type="search"
+      v-model="query"
+      @input="onInput"
+    />
+    <ul
+      v-if="suggestions.length "
+      class="absolute mt-1 w-full rounded-md bg-white border border-gray-300 shadow-lg z-50"
+    >
+      <li
+        v-for="(suggestion, index) in suggestions"
+        :key="index"
+        class="px-4 py-2 cursor-pointer hover:bg-gray-100"
+        @click="selectSuggestion(suggestion)"
+      >
+        {{ suggestion.propertylistCard0contentType }}
+      </li>
+    </ul>                </div>
               </div>
             </div>
           </div>
           <div class="flex items-center md:absolute md:inset-y-0 md:right-0 lg:hidden">
-            <!-- Mobile menu button -->
             <button
   type="button"
   class="-mx-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-rose-500"
@@ -86,7 +105,6 @@
 </svg>
             </a>
 
-            <!-- Profile dropdown -->
             <div x-data="Components.menu({ open: false })" x-init="init()" @keydown.escape.stop="open = false; focusButton()" @click.away="onClickAway($event)" class="relative ml-5 flex-shrink-0">
               <div>
                 <button type="button" class="flex rounded-full bg-white focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2" id="user-menu-button" x-ref="button" @click="onButtonClick()" @keyup.space.prevent="onButtonEnter()" @keydown.enter.prevent="onButtonEnter()" aria-expanded="false" aria-haspopup="true" x-bind:aria-expanded="open.toString()" @keydown.arrow-up.prevent="onArrowUp()" @keydown.arrow-down.prevent="onArrowDown()">
@@ -171,8 +189,21 @@
 export default {
   data() {
     return {
-      open: false, 
+      open: false,
+      suggestions: [],
+      debounceTimer: null,
     };
+  },
+  computed: {
+    // Bind the shared search query
+    query: {
+      get() {
+        return useState("searchQuery").value;
+      },
+      set(value) {
+        useState("searchQuery").value = value;
+      },
+    },
   },
   methods: {
     toggle() {
@@ -183,12 +214,42 @@ export default {
         event.preventDefault();
       }
     },
-
     redirectt() {
-       this.$router.push("/sign-in");
-    }
+      this.$router.push("/sign-in");
+    },
+    selectSuggestion(suggestion) {
+      this.query = suggestion.propertylistCard0contentType; // Update shared state
+      this.suggestions = []; // Clear suggestions
+    },
+    onInput() {
+      // Clear any previous debounce timer
+      clearTimeout(this.debounceTimer);
+      this.debounceTimer = setTimeout(() => {
+        if (this.query.trim() === "") {
+          this.suggestions = [];
+          return;
+        }
+
+        fetch(
+          `http://127.0.0.1:8000/api/product/search/${encodeURIComponent(
+            this.query
+          )}`
+        )
+          .then((response) => {
+            if (response.ok) return response.json();
+          })
+          .then((data) => {
+            this.suggestions = data || []; // Update suggestions
+            console.log(data);
+          })
+          .catch((error) => {
+            console.error("Error fetching data:", error);
+          });
+      }, 300); // 300ms debounce
+    },
   },
 };
+
 
 
 

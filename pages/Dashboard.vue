@@ -64,14 +64,15 @@
     >
       <div
         class="mother__cont"
-        v-for="property in propertiesData" :key="property.property.zpid"
+        v-for="property in filteredProperties" 
+        :key="property.propertylistCard0contentType"
       >
         <div class="truck-card-dashboard w-full ">
           <div
             class="image-container-dashboard"
            
           >
-            <img :src="property.property.media.propertyPhotoLinks.highResolutionLink" />
+            <img :src="property.propertymediapropertyPhotoLinkshighResolutionLink" />
             <div class="badgee">Start your purchase</div>
             <div class="wishlist">
               <svg
@@ -93,10 +94,10 @@
             
           >
             <h2 class="truck-title capitalize">
-              {{ property.property.propertyType }}
+              {{ property.propertypropertyType }}
             </h2>
             <div class="sponsored">
-              Status • <span class="dealer-name">{{ property.property.hdpView.listingStatus }}</span>
+              Status • <span class="dealer-name">{{ property.propertyhdpViewlistingStatus }}</span>
             </div>
             <ul class="truck-details">
               <li class="flex justify-center items-center gap-2">
@@ -117,7 +118,7 @@
                     />
                   </svg>
                 </div>
-               {{ property.property.bedrooms }} Bedrooms
+               {{ property.propertybedrooms }} Bedrooms
               </li>
               <li class="flex justify-center items-center gap-2">
                 <div >
@@ -163,7 +164,7 @@
                     </g>
                   </svg>
                 </div>
-                {{ property.property.bathrooms }} Bathrooms
+                {{ property.propertybathrooms }} Bathrooms
               </li>
               <li class="flex justify-center items-center gap-2">
                 <div >
@@ -181,7 +182,7 @@
                     ></path>
                   </svg>
                 </div>
-                             <p class="truncate">{{ property.property.lotSizeWithUnit.lotSize.toString().slice(0, 5) }}  {{ property.property.lotSizeWithUnit.lotSizeUnit }}</p>
+                             <p class="truncate">{{ property.propertylotSizeWithUnitlotSize.toString().slice(0, 5) }}  {{ property.propertylotSizeWithUnitlotSizeUnit }}</p>
               </li>
               <li class="flex justify-center items-center gap-2">
                 <div>
@@ -215,8 +216,8 @@
               </li>
             </ul>
             <div class="pricing" >
-              <div class="price">$ {{ formatNumber(property.property.price.value) }}</div>
-              <!-- <div class="monthly">Est. <span>$499/mo</span></div> -->
+              <div class="price">$ {{ formatNumber(property.propertypricevalue) }}</div>
+              <div class="monthly">Est. <span>{{ formatNumber(property.propertyestimateszestimate) }}</span></div>
               <div
                 class="deal-rating good-deal flex justify-center items-center gap-4"
               >
@@ -269,8 +270,8 @@
               
             >
               <p>
-                 {{ property.property.address.city }},
-               {{ property.property.address.streetAddress }}
+                 {{ property.propertyaddresscity }},
+               {{ property.propertyaddressstreetAddress }}
               </p>
             </div>
 
@@ -303,7 +304,7 @@
                   </svg>
                 </div>
                 <div >
-                  <p>{{ property.property.propertyDisplayRules.agent ?? "No agent" }}</p>
+                  <p>{{ property.propertypropertyDisplayRulesagent ?? "No agent" }}</p>
                 </div>
               </div>
 
@@ -416,49 +417,7 @@
                           </div>
                         </li>
                       
-                        <!-- <li class="flex items-center space-x-3 py-4">
-                          <div class="flex-shrink-0">
-                            <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80" alt="">
-                          </div>
-                          <div class="min-w-0 flex-1">
-                            <p class="text-sm font-medium text-gray-900">
-                              <a href="#">Floyd Miles</a>
-                            </p>
-                            <p class="text-sm text-gray-500">
-                              <a href="#">@floydmiles</a>
-                            </p>
-                          </div>
-                          <div class="flex-shrink-0">
-                            <button type="button" class="inline-flex items-center rounded-full bg-rose-50 px-3 py-0.5 text-sm font-medium text-rose-700 hover:bg-rose-100">
-                              <svg class="-ml-1 mr-0.5 h-5 w-5 text-rose-400" x-description="Heroicon name: mini/plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-  <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path>
-</svg>
-                              <span>Contact</span>
-                            </button>
-                          </div>
-                        </li> -->
-                      
-                        <!-- <li class="flex items-center space-x-3 py-4">
-                          <div class="flex-shrink-0">
-                            <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80" alt="">
-                          </div>
-                          <div class="min-w-0 flex-1">
-                            <p class="text-sm font-medium text-gray-900">
-                              <a href="#">Emily Selman</a>
-                            </p>
-                            <p class="text-sm text-gray-500">
-                              <a href="#">@emilyselman</a>
-                            </p>
-                          </div>
-                          <div class="flex-shrink-0">
-                            <button type="button" class="inline-flex items-center rounded-full bg-rose-50 px-3 py-0.5 text-sm font-medium text-rose-700 hover:bg-rose-100">
-                              <svg class="-ml-1 mr-0.5 h-5 w-5 text-rose-400" x-description="Heroicon name: mini/plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-  <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path>
-</svg>
-                              <span>Contact</span>
-                            </button>
-                          </div>
-                        </li> -->
+                       
                       
                     </ul>
                   </div> 
@@ -560,78 +519,75 @@
 
 <script>
 import axios from "axios";
-import dayjs from 'dayjs';
+import dayjs from "dayjs";
+
 export default {
   data() {
     return {
       propertiesData: null,
-      agentsData: null 
+      agentsData: null,
     };
   },
-
-
+  computed: {
+    // Use the filterProperties method from the composable
+    filteredProperties() {
+      if (this.propertiesData) {
+        return this.filterProperties(this.propertiesData);
+      }
+      return [];
+    },
+  },
   methods: {
-    formatNumber(number) {
-      if (typeof number !== "number" || isNaN(number)) {
-        return "";
+   formatNumber(number) {
+      if (typeof number !== 'number' || isNaN(number)) {
+        return number;
       }
 
-      let formattedNumber = "";
+      let formattedNumber = '';
       if (number >= 1000000) {
-        formattedNumber = (number / 1000000).toFixed(1) + "M";
+        formattedNumber = (number / 1000000).toFixed(1) + 'M';
       } else if (number >= 1000) {
-        formattedNumber = (number / 1000).toFixed(0) + "k";
+        formattedNumber = (number / 1000).toFixed(0) + 'k';
       } else {
         formattedNumber = number.toString();
       }
 
       return formattedNumber;
     },
-
     formatDate(dateString) {
-      return dayjs(dateString).format('YYYY-MM-DD');
+      return dayjs(dateString).format("YYYY-MM-DD");
     },
-
     slice_agent() {
       return this.agentsData ? this.agentsData.slice(0, 3) : [];
+    },
+  },
+  async mounted() {
+    try {
+      const response = await axios.get("http://localhost:8000/api/");
+      const data = response.data;
+      if (data && Array.isArray(data)) this.propertiesData = data;
+      else console.error("Unexpected data structure:", data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+
+    try {
+      const response = await axios.get("/api/Agents");
+      const Agentdata = response.data[0].data.results.professionals;
+      if (Agentdata && Array.isArray(Agentdata)) this.agentsData = Agentdata;
+      else console.error("Unexpected data structure:", Agentdata);
+    } catch (error) {
+      console.error("Error fetching data:", error);
     }
   },
- async mounted() {
-  try {
-    const response = await axios.get('/api/Zillow-Property');
-    // console.log(response.data[0].data);  
+  setup() {
+    // Use the composable for shared state and filtering
+    const { searchQuery, filterProperties } = useSearch();
 
-    const data = response.data[0].data.searchResults;  
-    console.log(data);
-
-    if (data && Array.isArray(data)) {
-      this.propertiesData = data; 
-    } else {
-      console.error("Unexpected data structure:", data);
-    }
-  } catch (error) {
-    console.error("Error fetching data:", error);
-  }
-
-  try {
-    const response = await axios.get('/api/Agents');
-    // console.log(response.data[0].data);  
-
-    const Agentdata = response.data[0].data.results.professionals;  
-    console.log(Agentdata);
-
-    if (Agentdata && Array.isArray(Agentdata)) {
-      this.agentsData = Agentdata; 
-    } else {
-      console.error("Unexpected data structure:", Agentdata);
-    }
-  } catch (error) {
-    console.error("Error fetching data:", error);
-  }
-
+    return {
+      searchQuery, // Bind the shared state
+      filterProperties, // Filter logic
+    };
   },
-
-
-
 };
 </script>
