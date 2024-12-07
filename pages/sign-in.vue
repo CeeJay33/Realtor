@@ -80,7 +80,7 @@ export default {
   methods: {
   async handleSignUp() {
     try {
-      const response = await fetch('https://backendjaycodes.geoedu360.com/realtor/api/login', {
+      const response = await fetch('https://backendjaycodes.geoedu360.com/realtor-api/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
