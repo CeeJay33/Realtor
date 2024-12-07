@@ -47,7 +47,7 @@
         class="mother__cont"
         v-for="property in slice_property(propertiesData)" :key="property.property.zpid"
       >
-        <div class="truck-card-dashboard w-full ">
+        <div class="truck-card-dashboard w-full">
           <div
             class="image-container-dashboard"
            

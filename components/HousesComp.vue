@@ -353,7 +353,7 @@ export default {
     // console.log(response.data[0].data);  // Check the structure of the API response
 
     const data = response.data[0].data.searchResults;
-    console.log(data);
+    // console.log(data);
 
     if (data && Array.isArray(data)) {
       this.propertiesData = data; 
