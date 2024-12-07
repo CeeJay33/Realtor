@@ -30,7 +30,7 @@
 
 .truck-card-dashboard {
     background-color: #ffffff;
-    width: 100%;
+    width: 90%;
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(121, 121, 121, 0.1);
     overflow: hidden;
@@ -64,11 +64,13 @@
 
 .image-container-dashboard {
     position: relative;
-    width: 90%;
+    width: 100%;
     margin: auto;
     height: 300px;
     overflow: hidden;
 }
+
+.image-container-dashboard .truck-card
 
 .image-container-dashboard img {
     width: 100%;
