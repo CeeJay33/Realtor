@@ -1,4 +1,4 @@
-import axios from "axios";
+// import axios from "axios";
 
 export async function isAuthenticated() {
   try {
@@ -18,7 +18,6 @@ export async function isAuthenticated() {
         withCredentials: true, // Allow sending cookies with the request
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json",
           Authorization: `Bearer ${token}`, // Add token in Authorization header
         },
       }
