@@ -125,7 +125,7 @@
               
             </div>
 
-            <a href="#" class="ml-6 inline-flex items-center rounded-md border border-transparent bg-black px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-black-700 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2">Log Out</a>
+            <a @click="toggleModal" class="ml-6 inline-flex items-center rounded-md border border-transparent bg-black px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-black-700 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2">Log Out</a>
           </div>
         </div>
       </div>
@@ -179,11 +179,10 @@
       </nav>
     </header>
 
-    
+           <ToastDelete :visible.sync="isModalVisible"/>
 </template>
 
 <script>
-
 
 
 export default {
@@ -192,6 +191,7 @@ export default {
       open: false,
       suggestions: [],
       debounceTimer: null,
+     
     };
   },
   computed: {
@@ -205,10 +205,26 @@ export default {
       },
     },
   },
+
+  setup() {
+    // Use useState to manage the modal visibility
+    const isModalVisible = useState('modalVisible', () => false); 
+
+    const toggleModal = () => {
+      isModalVisible.value = !isModalVisible.value;
+    };
+
+    return {
+      isModalVisible,
+      toggleModal
+    };
+  },
+  
   methods: {
     toggle() {
       this.open = !this.open;
     },
+    
     handleMouseDown(event) {
       if (this.open) {
         event.preventDefault();

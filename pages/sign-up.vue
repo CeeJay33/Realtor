@@ -74,7 +74,7 @@ export default {
   methods: {
     async handleSignUp() {
       try {
-        const response = await fetch('https://fashionhub.geoedu360.com/realtor-api/public/api/register', {
+        const response = await fetch('http://localhost:8000/api/register', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -96,8 +96,10 @@ export default {
         const result = await response.json();
 
         if (result.status === "Successful") {
-           showToast('Account created successfully!');
-          this.$router.push('/');
+          showToast('Account created successfully!');
+           const token = result.token;
+          localStorage.setItem("tok_val_id", token);
+          this.$router.push('/Dashboard');
         } else {
 
           // console.log(result);

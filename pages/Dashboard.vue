@@ -15,7 +15,7 @@
 
     <div class="py-10">
 
-       
+
       <div class="mx-auto max-w-3xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-12 lg:gap-8 lg:px-8">
         <div class="hidden lg:col-span-3 lg:block xl:col-span-2">
             <!-- where the side bar will follow -->
@@ -35,26 +35,7 @@
                 
               </select>
             </div>
-            <div class="hidden sm:block">
-              <nav class="isolate flex divide-x divide-gray-200 rounded-lg shadow" aria-label="Tabs">
-                
-                  <a href="#" aria-current="page" class="text-gray-900 rounded-l-lg  group relative min-w-0 flex-1 overflow-hidden bg-white py-4 px-6 text-sm font-medium text-center hover:bg-gray-50 focus:z-10" x-state:on="Current" x-state:off="Default" x-state-description="Current: &quot;text-gray-900&quot;, Default: &quot;text-gray-500 hover:text-gray-700&quot;">
-                    <span>Recent</span>
-                    <span aria-hidden="true" class="bg-black absolute inset-x-0 bottom-0 h-0.5"></span>
-                  </a>
-                
-                  <a href="#" class="text-gray-500 hover:text-gray-700   group relative min-w-0 flex-1 overflow-hidden bg-white py-4 px-6 text-sm font-medium text-center hover:bg-gray-50 focus:z-10" x-state-description="undefined: &quot;text-gray-900&quot;, undefined: &quot;text-gray-500 hover:text-gray-700&quot;">
-                    <span>Most Liked</span>
-                    <span aria-hidden="true" class="bg-transparent absolute inset-x-0 bottom-0 h-0.5"></span>
-                  </a>
-                
-                  <a href="#" class="text-gray-500 hover:text-gray-700  rounded-r-lg group relative min-w-0 flex-1 overflow-hidden bg-white py-4 px-6 text-sm font-medium text-center hover:bg-gray-50 focus:z-10" x-state-description="undefined: &quot;text-gray-900&quot;, undefined: &quot;text-gray-500 hover:text-gray-700&quot;">
-                    <span>Most Answers</span>
-                    <span aria-hidden="true" class="bg-transparent absolute inset-x-0 bottom-0 h-0.5"></span>
-                  </a>
-                
-              </nav>
-            </div>
+            
           </div>
 
           <div class="">
@@ -64,15 +45,14 @@
     >
       <div
         class="mother__cont"
-        v-for="property in filteredProperties" 
-        :key="property.propertylistCard0contentType"
+        v-for="property in slice_property(propertiesData)" :key="property.property.zpid"
       >
         <div class="truck-card-dashboard w-full ">
           <div
             class="image-container-dashboard"
            
           >
-            <img :src="property.propertymediapropertyPhotoLinkshighResolutionLink" />
+            <img :src="property.property.media.propertyPhotoLinks.highResolutionLink" />
             <div class="badgee">Start your purchase</div>
             <div class="wishlist">
               <svg
@@ -94,10 +74,10 @@
             
           >
             <h2 class="truck-title capitalize">
-              {{ property.propertypropertyType }}
+              {{ property.property.propertyType }}
             </h2>
             <div class="sponsored">
-              Status • <span class="dealer-name">{{ property.propertyhdpViewlistingStatus }}</span>
+              Status • <span class="dealer-name">{{ property.property.hdpView.listingStatus }}</span>
             </div>
             <ul class="truck-details">
               <li class="flex justify-center items-center gap-2">
@@ -118,7 +98,7 @@
                     />
                   </svg>
                 </div>
-               {{ property.propertybedrooms }} Bedrooms
+               {{ property.property.bedrooms }} Bedrooms
               </li>
               <li class="flex justify-center items-center gap-2">
                 <div >
@@ -164,7 +144,7 @@
                     </g>
                   </svg>
                 </div>
-                {{ property.propertybathrooms }} Bathrooms
+                {{ property.property.bathrooms }} Bathrooms
               </li>
               <li class="flex justify-center items-center gap-2">
                 <div >
@@ -182,7 +162,7 @@
                     ></path>
                   </svg>
                 </div>
-                             <p class="truncate">{{ property.propertylotSizeWithUnitlotSize.toString().slice(0, 5) }}  {{ property.propertylotSizeWithUnitlotSizeUnit }}</p>
+                             <p class="truncate">{{ property.property.lotSizeWithUnit.lotSize.toString().slice(0, 5) }}  {{ property.property.lotSizeWithUnit.lotSizeUnit }}</p>
               </li>
               <li class="flex justify-center items-center gap-2">
                 <div>
@@ -216,8 +196,8 @@
               </li>
             </ul>
             <div class="pricing" >
-              <div class="price">$ {{ formatNumber(property.propertypricevalue) }}</div>
-              <div class="monthly">Est. <span>{{ formatNumber(property.propertyestimateszestimate) }}</span></div>
+              <div class="price">$ {{ formatNumber(property.property.price.value) }}</div>
+              <div class="monthly">Est. <span>{{ formatNumber(property.property.estimates.zestimate) }}</span></div>
               <div
                 class="deal-rating good-deal flex justify-center items-center gap-4"
               >
@@ -270,8 +250,8 @@
               
             >
               <p>
-                 {{ property.propertyaddresscity }},
-               {{ property.propertyaddressstreetAddress }}
+                 {{ property.property.address.city }},
+               {{ property.property.address.streetAddress }}
               </p>
             </div>
 
@@ -304,7 +284,7 @@
                   </svg>
                 </div>
                 <div >
-                  <p>{{ property.propertypropertyDisplayRulesagent ?? "No agent" }}</p>
+                   <p>{{ property.property.propertyDisplayRules.agent ?? "No agent" }}</p>
                 </div>
               </div>
 
@@ -520,6 +500,8 @@
 <script>
 import axios from "axios";
 import dayjs from "dayjs";
+import { isAuthenticated } from "../middlewares/AuthStatus";
+import { useRouter } from "#app";
 
 export default {
   data() {
@@ -528,17 +510,8 @@ export default {
       agentsData: null,
     };
   },
-  computed: {
-    // Use the filterProperties method from the composable
-    filteredProperties() {
-      if (this.propertiesData) {
-        return this.filterProperties(this.propertiesData);
-      }
-      return [];
-    },
-  },
   methods: {
-   formatNumber(number) {
+    formatNumber(number) {
       if (typeof number !== 'number' || isNaN(number)) {
         return number;
       }
@@ -560,34 +533,49 @@ export default {
     slice_agent() {
       return this.agentsData ? this.agentsData.slice(0, 3) : [];
     },
+    slice_property() {
+      return this.propertiesData ? this.propertiesData.slice(3, 8) : [];
+    },
+  },
+  async beforeMount() {
+    // Ensure authentication before the page loads
+    const router = useRouter();
+    const { showBadToast } = useBadToast();
+
+    const authenticated = await isAuthenticated();
+    if (!authenticated) {
+      showBadToast("Session expired. Please log in!");
+      router.push('/');
+      return; // Stop further execution if not authenticated
+    }
   },
   async mounted() {
     try {
-      const response = await axios.get("http://localhost:8000/api/");
-      const data = response.data;
-      if (data && Array.isArray(data)) this.propertiesData = data;
-      else console.error("Unexpected data structure:", data);
+      // Fetch Zillow Property Data
+      const response = await axios.get("/api/Zillow-Property");
+      const data = response.data[0].data.searchResults;
+      if (data && Array.isArray(data)) {
+        this.propertiesData = data;
+      } else {
+        console.error("Unexpected data structure:", data);
+      }
     } catch (error) {
-      console.error("Error fetching data:", error);
+      console.error("Error fetching property data:", error);
     }
 
     try {
+      // Fetch Agents Data
       const response = await axios.get("/api/Agents");
       const Agentdata = response.data[0].data.results.professionals;
-      if (Agentdata && Array.isArray(Agentdata)) this.agentsData = Agentdata;
-      else console.error("Unexpected data structure:", Agentdata);
+      if (Agentdata && Array.isArray(Agentdata)) {
+        this.agentsData = Agentdata;
+      } else {
+        console.error("Unexpected data structure:", Agentdata);
+      }
     } catch (error) {
-      console.error("Error fetching data:", error);
+      console.error("Error fetching agent data:", error);
     }
-  },
-  setup() {
-    // Use the composable for shared state and filtering
-    const { searchQuery, filterProperties } = useSearch();
-
-    return {
-      searchQuery, // Bind the shared state
-      filterProperties, // Filter logic
-    };
   },
 };
 </script>
+

@@ -1,7 +1,3 @@
-<script setup lang="ts">
-// import ToastReg from '~/components/ToastReg.vue';
-</script>
-
 
 
 <template>
@@ -18,3 +14,28 @@
 
 
 </template>
+
+
+<script>
+import { isAuthenticated } from "../middlewares/AuthStatus";
+import { useRouter } from "#app";
+import { onMounted } from "vue";
+
+export default {
+  setup() {
+    const router = useRouter();
+
+    onMounted(async () => {
+      try {
+        const authenticated = await isAuthenticated();
+
+        if (authenticated) {
+          router.push('/Dashboard');
+        }
+      } catch (error) {
+        console.error('Authentication check failed:', error);
+      }
+    });
+  }
+};
+</script>

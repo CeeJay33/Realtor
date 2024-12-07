@@ -9,7 +9,7 @@
   <section class="hero-section">
     <div class="hero-content">
       <h1 class="font-mono ">Find Your Dream Home with Us </h1>
-      <p>Discover properties that match your lifestyle and budget. From cozy apartments to luxury estates.</p>
+      <p class="">Discover properties that match your lifestyle and budget. From cozy apartments to luxury estates.</p>
       <div class="hero-buttons">
         <button class="shop-now">Shop Now</button>
         <button class="watch-video">

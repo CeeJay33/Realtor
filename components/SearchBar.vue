@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white z-50 w-full sticky top-16 sub_main">
+  <div v-if="isVisible" class="bg-white z-50 w-full sticky top-16 sub_main">
     <div class="search__bar__main">
       <form class="flex flex-col md:flex-row gap-3">
         <!-- Custom Location Dropdown -->
@@ -112,6 +112,8 @@ export default {
         price: "Price", 
         sort: "Sort", 
       },
+
+      isVisible: false,
     };
   },
   methods: {
@@ -125,7 +127,26 @@ export default {
       this.selected[type] = option;
       this.dropdowns[type] = false;
     },
+     handleScroll() {
+      const scrollHeight = document.documentElement.scrollHeight;
+      const scrollPosition = window.scrollY;
+
+      if (scrollPosition > scrollHeight / 8) {
+        this.isVisible = true;
+      } else {
+        this.isVisible = false;
+      }
+    },
   },
+
+   mounted() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.handleScroll);
+  },
+
+  
 };
 </script>
 
