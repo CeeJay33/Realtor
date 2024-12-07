@@ -15,8 +15,10 @@ export async function isAuthenticated() {
     const response = await axios.get(
       "https://backendjaycodes.geoedu360.com/realtor-api/public/api/authme", // Removed '/public/'
       {
+        withCredentials: true, // Allow sending cookies with the request
         headers: {
           "Content-Type": "application/json",
+          // Accept: "application/json",
           Authorization: `Bearer ${token}`, // Add token in Authorization header
         },
       }
