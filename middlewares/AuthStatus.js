@@ -6,7 +6,7 @@ export async function isAuthenticated() {
     console.log(token);
 
     const response = await axios.get(
-      "http://localhost:8000/api/authStatus",
+      "https://backendjaycodes.geoedu360.com/realtor-api/public/api/authStatus",
       {
         withCredentials: true,
         headers: {
