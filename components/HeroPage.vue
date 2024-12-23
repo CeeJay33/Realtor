@@ -136,7 +136,7 @@ body {
 
 .hero-image {
   position: relative;
-  top: -205;
+  top: -20;
   right: 5%;
 }
 
@@ -232,10 +232,11 @@ body {
 
 .hero-content {
     max-width: 100%;
+    margin-top: 2rem;
 }
 
 .hero-content h1 {
-    font-size: 2rem;
+    font-size: 1.6rem;
    
 }
 

@@ -31,7 +31,7 @@ const items = [
 
 @media (max-width: 493px){
   .compp{
-  height: 30rem;
+  height: 35rem;
 }
 }
 </style>
