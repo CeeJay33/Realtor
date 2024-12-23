@@ -13,7 +13,7 @@ export async function isAuthenticated() {
 
     // Send the request to check authentication status
     const response = await axios.get(
-      "https://backendjaycodes.geoedu360.com/realtor-api/public/api/authme", // Removed '/public/'
+      "http://localhost:8000/api/authStatus", // Removed '/public/'
       {
         withCredentials: true, // Allow sending cookies with the request
         headers: {

@@ -4,8 +4,12 @@ export default defineNuxtConfig({
   //   rapidApiKey: process.env.NUXT_ENV_RAPIDAPI_KEY,
   // },
 
-  modules: ["@nuxtjs/google-fonts"],
+  modules: ["@nuxtjs/google-fonts", "@nuxt/ui"],
 
+  ui: {
+    global: true,
+    icons: ["lucide"],
+  },
   head: {
     link: [
       {
@@ -24,8 +28,7 @@ export default defineNuxtConfig({
   // devtools: false,
   postcss: {
     plugins: {
-      tailwindcss: {},
-      autoprefixer: {},
+      "@tailwindcss/postcss": {},
     },
   },
 

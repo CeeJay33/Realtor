@@ -83,7 +83,7 @@ export default {
       }
 
       const response = await axios.post(
-        "https://backendjaycodes.geoedu360.com/realtor-api/public/api/logout",
+        "http://localhost:8000/api/logout",
         {},
         {
           withCredentials: true, 

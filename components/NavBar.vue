@@ -14,11 +14,11 @@
       <ul
         class="hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 bg-white shadow-sm bg-opacity-50"
       >
-        <!-- <li><a href="#top">Home</a></li>
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#Services">Services</a></li>
-        <li><a href="#work">Our work</a></li>
-        <li><a href="#contact">Contact Us</a></li> -->
+        <li><a href="#top">Home</a></li>
+        <li><a href="#about">Real Esates</a></li>
+        <li><a href="#Services">Single Property</a></li>
+        <li><a href="#work">Blog</a></li>
+        <li><a href="#contact">Contact Us</a></li>
       </ul>
 
       <div class="flex items-center gap-4">

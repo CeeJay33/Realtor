@@ -1,5 +1,5 @@
 <template>
-    <header class="bg-white shadow-sm lg:static lg:overflow-y-visible" x-state:on="Menu open" x-state:off="Menu closed" :class="{ 'fixed inset-0 z-40 overflow-y-auto': open }" x-data="Components.popover({ open: false, focus: false })" x-init="init()" @keydown.escape="onEscape" @close-popover-group.window="onClosePopoverGroup">
+    <header class="bg-white shadow-sm sticky z-30 top-0 lg:overflow-y-visible" x-state:on="Menu open" x-state:off="Menu closed" :class="{ 'fixed inset-0 z-40 overflow-y-auto': open }" x-data="Components.popover({ open: false, focus: false })" x-init="init()" @keydown.escape="onEscape" @close-popover-group.window="onClosePopoverGroup">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="relative flex justify-between lg:gap-8 xl:grid xl:grid-cols-12">
           <div class="flex md:absolute md:inset-y-0 md:left-0 lg:static xl:col-span-2">
@@ -54,15 +54,12 @@
             <button
   type="button"
   class="-mx-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-rose-500"
-  @click="toggle"
-  @mousedown="handleMouseDown"
-  :aria-expanded="open.toString()"
-  :class="{ 'hidden': open }"
+
 >
   <span class="sr-only">Open menu</span>
   <svg
     class="block h-6 w-6"
-    :class="{ 'hidden': open, 'block': !open }"
+    
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
@@ -79,7 +76,7 @@
 
   <svg
     class="hidden h-6 w-6"
-    :class="{ 'block': open, 'hidden': !open }"
+    
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
@@ -96,6 +93,7 @@
 </button>
 
           </div>
+
           <div class="hidden lg:flex lg:items-center lg:justify-end xl:col-span-4">
             <a href="#" class="text-sm font-medium text-gray-900 hover:underline">Go Premium</a>
             <a href="#" class="ml-5 flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2">
@@ -105,7 +103,7 @@
 </svg>
             </a>
 
-            <div x-data="Components.menu({ open: false })" x-init="init()" @keydown.escape.stop="open = false; focusButton()" @click.away="onClickAway($event)" class="relative ml-5 flex-shrink-0">
+            <div  class="relative ml-5 flex-shrink-0">
               <div>
                 <button type="button" class="flex rounded-full bg-white focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2" id="user-menu-button" x-ref="button" @click="onButtonClick()" @keyup.space.prevent="onButtonEnter()" @keydown.enter.prevent="onButtonEnter()" aria-expanded="false" aria-haspopup="true" x-bind:aria-expanded="open.toString()" @keydown.arrow-up.prevent="onArrowUp()" @keydown.arrow-down.prevent="onArrowDown()">
                   <span class="sr-only">Open user menu</span>
@@ -125,12 +123,25 @@
               
             </div>
 
-            <a @click="toggleModal" class="ml-6 inline-flex items-center rounded-md border border-transparent bg-black px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-black-700 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2">Log Out</a>
+            <a @click="toggleModal" class="cursor-pointer ml-6 inline-flex items-center rounded-md border border-transparent bg-black px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-black-700 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2">Log Out</a>
           </div>
         </div>
       </div>
 
-      <nav x-description="Mobile menu, show/hide based on menu state." class="lg:hidden" aria-label="Global" x-ref="panel" x-show="open" @click.away="open = false">
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <nav x-description="Mobile menu, show/hide based on menu state." class="lg:hidden hidden" >
         <div class="mx-auto max-w-3xl space-y-1 px-2 pt-2 pb-3 sm:px-4">
           
             <a href="#" aria-current="page" class="bg-gray-100 text-gray-900 block rounded-md py-2 px-3 text-base font-medium" x-state:on="Current" x-state:off="Default" x-state-description="Current: &quot;bg-gray-100 text-gray-900&quot;, Default: &quot;hover:bg-gray-50&quot;">Home</a>

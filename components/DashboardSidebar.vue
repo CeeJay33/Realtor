@@ -1,6 +1,6 @@
 <template>
-     <nav aria-label="Sidebar" class="sticky top-4 divide-y divide-gray-300">
-            <div class="space-y-1 pb-8">
+     <nav aria-label="Sidebar" class="fixed top-32 divide-y divide-gray-300">
+            <div class="space-y-1 pb-8 overflow-scroll">
               
                 <a href="#" class="bg-gray-200 text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md" aria-current="page" x-state:on="Current" x-state:off="Default" x-state-description="Current: &quot;bg-gray-200 text-gray-900&quot;, Default: &quot;text-gray-700 hover:bg-gray-50&quot;">
                   <svg class="text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6" x-description="Heroicon name: outline/home" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -44,21 +44,7 @@
                     <span class="truncate">Food</span>
                   </a>
                 
-                  <a href="#" class="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900">
-                    <span class="truncate">Sports</span>
-                  </a>
-                
-                  <a href="#" class="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900">
-                    <span class="truncate">Animals</span>
-                  </a>
-                
-                  <a href="#" class="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900">
-                    <span class="truncate">Science</span>
-                  </a>
-                
-                  <a href="#" class="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900">
-                    <span class="truncate">Dinosaurs</span>
-                  </a>
+                 
                 
                   <a href="#" class="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900">
                     <span class="truncate">Talents</span>

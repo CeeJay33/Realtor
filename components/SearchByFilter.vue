@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full mt-0 bg-white text-center sticky py-4 px-0 top-16 z-50 container__bar">
+  <div class="w-full mt-0 bg-white text-center sticky py-4 px-0 top-16 container__bar">
     <div class="flex items-center justify-center gap-5 ">
       <h4 class="font-semibold">Search properties by filter</h4>
       <!-- Click event on the SVG to toggle container visibility -->

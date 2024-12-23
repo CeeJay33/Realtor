@@ -1,7 +1,9 @@
 <template>
   <div class=" mt-24">
-    <h2 class="ml-6 sm:ml-36 antialiased font-bold text-lgg font-mono">Properties for Sale</h2>
-    <p class="ml-6 sm:ml-36 antialiased font-mono">Browse out list of apartment of your choice!</p>
+    <div class="mb-8">
+    <h2 class="ml-6 sm:ml-36 antialiased font-bold text-lgg ">Properties for Sale</h2>
+    <p class="ml-6 sm:ml-36 antialiased ">Browse out list of apartment of your choice!</p>
+    </div>
     <div
       class="designer-details flex justify-center items-center gap-4 flex-wrap"
       
@@ -9,7 +11,7 @@
     
       <div
         class="mother__cont"
-        v-for="property in propertiesData" :key="property.property.zpid"
+        v-for="property in slice_property(propertiesData)" :key="property.property.zpid"
       >
         <div class="truck-card">
           <div
@@ -345,7 +347,11 @@ export default {
 
     formatDate(dateString) {
       return dayjs(dateString).format('YYYY-MM-DD');
-    }
+    },
+
+    slice_property() {
+      return this.propertiesData ? this.propertiesData.slice(0, 3) : [];
+    },
   },
  async mounted() {
   try {

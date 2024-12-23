@@ -5,9 +5,16 @@
 <div class="main__container">
     <NavBar/>
     <!-- <SearchByFilter class="hidden sm:block"/> -->
-    <HeroPage/>
-    <SearchBar class="hidden sm:block"/>
+     <HeroSectionPage/>
+    <!-- <HeroPage/> -->
+    
+    <!-- <SearchBar class="hidden sm:block"/> -->
+   
     <HousesComp/>
+     <ShowCase/>
+    <!-- <LoveUs/> -->
+     <HeroPage/>
+    <ShowCase/>
     <ToastReg/>
     <BadToastReg/>
     </div>
