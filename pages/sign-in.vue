@@ -98,7 +98,6 @@ export default {
 
       const result = await response.json();
 
-      // Clear previous error messages
       this.emailMessage = '';
       this.passwordMessage = '';
 
@@ -108,7 +107,6 @@ export default {
         localStorage.setItem("tok_val_id", token);
         this.$router.push('/Dashboard');
       } else if (result.errors) {
-        // Handle specific field errors
         if (result.errors.email) {
           this.emailMessage = result.errors.email.join(", ");
           setTimeout(() => {
@@ -122,12 +120,9 @@ export default {
           }, 5000)
         }
 
-        // Avoid showing bad toast for field-specific errors
       } else if (result.message === "Invalid credentials") {
-        // Show bad toast for invalid credentials
         showBadToast(result.message);
       } else {
-        // Handle any other unexpected errors
         showBadToast('An unexpected error occurred.');
       }
     } catch (error) {

@@ -2,7 +2,7 @@ import axios from "axios";
 
 export async function isAuthenticated() {
   try {
-    // Retrieve the token from localStorage
+
     const token = localStorage.getItem("tok_val_id");
     console.log("Token from localStorage:", token);
 
@@ -11,15 +11,14 @@ export async function isAuthenticated() {
       return false;
     }
 
-    // Send the request to check authentication status
     const response = await axios.get(
-      "http://localhost:8000/api/authStatus", // Removed '/public/'
+      "https://backendjaycodes.geoedu360.com/realtor-api/public/api/authStatus",
       {
-        withCredentials: true, // Allow sending cookies with the request
+        withCredentials: true,
         headers: {
           "Content-Type": "application/json",
-          // Accept: "application/json",
-          Authorization: `Bearer ${token}`, // Add token in Authorization header
+
+          Authorization: `Bearer ${token}`,
         },
       }
     );
