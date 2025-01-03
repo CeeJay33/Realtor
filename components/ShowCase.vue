@@ -10,19 +10,22 @@ const items = [
   'https://ultra-realhomes.b-cdn.net/wp-content/uploads/2020/06/Beautiful-House-1240x720.jpg',
 ];
 
-// Reactive variable for dynamic UI attribute
+// Reactive variables for dynamic UI attributes and arrow visibility
 const ui = ref({ item: 'basis-1/3' });
+const showArrows = ref(true);
 
 const handleResize = () => {
   if (window.innerWidth <= 490) {
     ui.value = { item: 'basis-1/1' };
+    showArrows.value = false; // Hide arrows on mobile
   } else {
     ui.value = { item: 'basis-1/3' };
+    showArrows.value = true; // Show arrows on larger screens
   }
 };
 
 onMounted(() => {
-  handleResize(); // Set initial value
+  handleResize(); // Set initial values
   window.addEventListener('resize', handleResize); // Listen for window resize
 });
 
@@ -35,14 +38,14 @@ onBeforeUnmount(() => {
   <UCarousel
     v-slot="{ item }"
     loop
-    arrows
+    :arrows="showArrows"
     class="templateee"
     dots
     :autoplay="{ delay: 6000 }"
     :items="items"
     :ui="ui"
   >
-    <img :src="item" width="350"  class="rounded-lg" />
+    <img :src="item" width="350" class="rounded-lg" />
   </UCarousel>
 </template>
 
@@ -61,7 +64,7 @@ onBeforeUnmount(() => {
 
   .templateee img {
     width: 100%;
-    height: 400px;
+    height: 450px;
   }
 }
 </style>
