@@ -42,7 +42,7 @@ onBeforeUnmount(() => {
     :items="items"
     :ui="ui"
   >
-    <img :src="item" width="350" height="200" class="rounded-lg" />
+    <img :src="item" width="350"  class="rounded-lg" />
   </UCarousel>
 </template>
 
@@ -61,6 +61,7 @@ onBeforeUnmount(() => {
 
   .templateee img {
     width: 100%;
+    height: 400px;
   }
 }
 </style>
