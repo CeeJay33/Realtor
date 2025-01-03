@@ -88,7 +88,7 @@ export default {
   methods: {
     async handleSignUp() {
       try {
-        const response = await fetch('http://localhost:8000/api/register', {
+        const response = await fetch('https://backendjaycodes.geoedu360.com/realtor-api/public/api/register', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

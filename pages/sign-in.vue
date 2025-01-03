@@ -94,7 +94,7 @@ export default {
 
         // Create Axios instance
         const ax = axios.create({
-          baseURL: 'http://localhost:8000/',
+          baseURL: 'https://backendjaycodes.geoedu360.com/realtor-api/public/',
           headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json',

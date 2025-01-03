@@ -10,14 +10,17 @@ export async function isAuthenticated() {
       return false;
     }
 
-    const response = await axios.get("http://127.0.0.1:8000/api/authStatus", {
-      withCredentials: true,
-      headers: {
-        "Content-Type": "application/json",
+    const response = await axios.get(
+      "https://backendjaycodes.geoedu360.com/realtor-api/public/api/authStatus",
+      {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
 
-        Authorization: `Bearer ${token}`,
-      },
-    });
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
     console.log("Authentication check response:", response);
 
