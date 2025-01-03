@@ -35,6 +35,7 @@ onBeforeUnmount(() => {
   <UCarousel
     v-slot="{ item }"
     loop
+    arrows
     class="templateee"
     dots
     :autoplay="{ delay: 6000 }"
@@ -48,7 +49,7 @@ onBeforeUnmount(() => {
 <style>
 .templateee {
   width: 70%;
-  margin: auto;
+  margin: 3rem auto;
 }
 
 @media (max-width: 490px) {

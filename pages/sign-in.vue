@@ -67,6 +67,9 @@
 </template>
 
 <script>
+import axios from 'axios';
+import useBadToast from "../composables/useBadToast";
+import useToast from "../composables/useToast";
 
 export default {
   data() {
@@ -78,62 +81,104 @@ export default {
     };
   },
   methods: {
-  async handleSignUp() {
-    try {
-      const response = await fetch('https://backendjaycodes.geoedu360.com/realtor-api/public/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json', 
-        },
-        body: JSON.stringify({
+    async handleSignUp() {
+      try {
+        // Helper function to get a cookie by name
+        const getCookie = (name) => {
+          const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+          return match ? match[2] : null; // Return the raw value without decoding
+        };
+
+        // Retrieve cookies
+        const xsrfToken = getCookie('XSRF-TOKEN'); // Get the CSRF token
+
+        // Create Axios instance
+        const ax = axios.create({
+          baseURL: 'http://localhost:8000/',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-XSRF-TOKEN': xsrfToken, // Add XSRF-TOKEN as a header
+
+          },
+        });
+
+        ax.defaults.withCredentials = true; // Include cookies
+
+        // Make the POST request
+        const response = await ax.post("api/login", {
           email: this.email,
           password: this.password,
-        }),
-        credentials: 'include', 
-      });
+        });
 
-      const { showToast } = useToast();
-      const { showBadToast } = useBadToast();
+        const result = response.data;
 
-      const result = await response.json();
+        // Clear previous messages
+        this.emailMessage = '';
+        this.passwordMessage = '';
 
-      this.emailMessage = '';
-      this.passwordMessage = '';
-
-      if (result.message === "Login successful") {
-        showToast('Logged in successfully!');
-        const token = result.token;
-        localStorage.setItem("tok_val_id", token);
-        this.$router.push('/Dashboard');
-      } else if (result.errors) {
-        if (result.errors.email) {
-          this.emailMessage = result.errors.email.join(", ");
-          setTimeout(() => {
-            this.emailMessage = ""
-          }, 5000)
+        if (result.message === "Login successful") {
+          const { showToast } = useToast();
+          showToast && showToast('Logged in successfully!');
+          const token = result.token;
+          localStorage.setItem("tok_val_id", token);
+          this.$router.push('/Dashboard');
+        } else if (result.errors) {
+          if (result.errors.email) {
+            this.emailMessage = result.errors.email.join(", ");
+            setTimeout(() => {
+              this.emailMessage = ""
+            }, 5000);
+          }
+          if (result.errors.password) {
+            this.passwordMessage = result.errors.password.join(", ");
+            setTimeout(() => {
+              this.passwordMessage = ""
+            }, 5000);
+          }
+        } else if (result.message === "Invalid credentials") {
+          const { showBadToast } = useBadToast();
+          showBadToast && showBadToast(result.message);
+        } else {
+          const { showBadToast } = useBadToast();
+          showBadToast && showBadToast('An unexpected error occurred.');
         }
-        if (result.errors.password) {
-          this.passwordMessage = result.errors.password.join(", ");
-           setTimeout(() => {
-            this.passwordMessage = ""
-          }, 5000)
-        }
+      } catch (error) {
+        console.error('Error during sign-up:', error);
 
-      } else if (result.message === "Invalid credentials") {
-        showBadToast(result.message);
-      } else {
-        showBadToast('An unexpected error occurred.');
+        if (error.response && error.response.data) {
+          const { message, errors } = error.response.data;
+
+          if (message === "Invalid credentials") {
+            const { showBadToast } = useBadToast();
+            showBadToast && showBadToast(message);
+          } else if (errors) {
+            if (errors.email) {
+              this.emailMessage = errors.email.join(", ");
+               setTimeout(() => {
+              this.emailMessage = ""
+            }, 5000);
+            }
+            if (errors.password) {
+              this.passwordMessage = errors.password.join(", ");
+               setTimeout(() => {
+              this.passwordMessage = ""
+            }, 5000);
+            }
+          } else {
+            const { showBadToast } = useBadToast();
+            showBadToast && showBadToast('An error occurred while signing in.');
+          }
+        } else {
+          const { showBadToast } = useBadToast();
+          showBadToast && showBadToast('A network error occurred.');
+        }
       }
-    } catch (error) {
-      console.error('Error during sign-up:', error);
-      showBadToast('An error occurred while signing in.');
-    }
+    },
   },
-}
-
-}
+};
 </script>
+
 
 <style scoped>
 .error-text {

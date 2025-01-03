@@ -4,6 +4,7 @@
     <h2 class="ml-6 sm:ml-36 antialiased font-bold text-lgg ">Properties for Sale</h2>
     <p class="ml-6 sm:ml-36 antialiased ">Browse out list of apartment of your choice!</p>
     </div>
+    
     <div
       class="designer-details flex justify-center items-center gap-4 flex-wrap"
       
@@ -350,7 +351,7 @@ export default {
     },
 
     slice_property() {
-      return this.propertiesData ? this.propertiesData.slice(0, 3) : [];
+      return this.propertiesData ? this.propertiesData.slice(0, 6) : [];
     },
   },
  async mounted() {

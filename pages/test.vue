@@ -1,17 +1,29 @@
-<script setup lang="ts">
-const items = [
-  'https://picsum.photos/1920/1080?random=1',
-  'https://picsum.photos/1920/1080?random=2',
-  'https://picsum.photos/1920/1080?random=3',
-  'https://picsum.photos/1920/1080?random=4',
-  'https://picsum.photos/1920/1080?random=5',
-  'https://picsum.photos/1920/1080?random=6'
-]
-</script>
-
 <template>
-  <UCarousel v-slot="{ item }" :items="items" :ui="{ item: 'basis-full' }" class="rounded-lg overflow-hidden" arrows>
-    <img :src="item" class="w-full" draggable="false">
-  </UCarousel>
+  <div>
+    <button @click="invalidateCsrf">Invalidate</button>
+  </div>
 </template>
 
+<script>
+import axios from 'axios';
+
+export default {
+  methods: {
+    async invalidateCsrf() {
+      try {
+        const response = await axios.post("http://127.0.0.1:8000/api/invalidate-sessions", {
+      withCredentials: true,
+      headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': 'true'
+      },
+    });
+        console.log(response.data.message); // Log the success message
+      } catch (error) {
+        console.error('Error invalidating CSRF token:', error); // Log the error for debugging
+      }
+    },
+  },
+};
+</script>

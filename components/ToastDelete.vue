@@ -97,7 +97,7 @@ export default {
 
       if (response.status == 200) {
         const isModalVisible = useState('modalVisible', () => false);
-        showToast("Logged out Successfully")
+        // showToast("Logged out Successfully")
         isModalVisible.value = false;
         this.$router.push("/")
         // return true;

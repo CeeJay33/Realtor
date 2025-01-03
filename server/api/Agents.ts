@@ -322,7 +322,7 @@ export default defineEventHandler(async (event) => {
               phoneNumber: "(719) 440-0122",
               profileLink: "/profile/Cindy-and-Joy",
               profilePhotoSrc:
-                "https://photos.zillowstatic.com/fp/4bb7e6d88710be02936ce9a338f5f2b5-h_g.jpg",
+                "https://photos.z0illowstatic.com/fp/4bb7e6d88710be02936ce9a338f5f2b5-h_g.jpg",
               reviewExcerpt:
                 "We were so impressed with Cindy when we bought our first house in the ...",
               reviewExcerptDate: "2023-11-13 08:01:00",
