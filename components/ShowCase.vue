@@ -55,7 +55,7 @@ onBeforeUnmount(() => {
 @media (max-width: 490px) {
   .templateee {
     width: 100%;
-    margin: auto;
+    margin: 5rem auto;
     padding: 0 7px;
   }
 

@@ -15,7 +15,7 @@ const items = [
 </script>
 
 <template>
-  <UCarousel v-slot="{ item }" :items="items" :ui="{ item: 'basis-full' }" class="rounded-lg overflow-hidden" arrow dots>
+  <UCarousel v-slot="{ item }" :items="items" :ui="{ item: 'basis-full' }" class="rounded-lg overflow-hidden hidden sm:block" arrow dots>
     <!-- <CoolSEarch/> -->
     <img :src="item" class="w-full compp" draggable="false" >
   </UCarousel>
@@ -27,6 +27,7 @@ const items = [
 .compp{
   height: 50rem;
 }
+
 
 
 @media (max-width: 493px){
